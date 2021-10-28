@@ -18,6 +18,8 @@ interface GestureProps {
 
 export const PanGesture = ({ width, height }: GestureProps) => {
   console.log({ width, height });
+  const boundX = width - CARD_WIDTH;
+  const boundY = height - CARD_HEIGHT;
   const translateX = useSharedValue(0)
   const translateY = useSharedValue(0);
 
@@ -33,11 +35,11 @@ export const PanGesture = ({ width, height }: GestureProps) => {
     onEnd: (event) => {
       translateX.value = withDecay({
         velocity: event.velocityX,
-        clamp: [0, width - CARD_WIDTH]
+        clamp: [0, boundX]
       })
       translateY.value = withDecay({
         velocity: event.velocityY,
-        clamp: [0, height - CARD_HEIGHT]
+        clamp: [0, boundY]
       })
     }
   });
