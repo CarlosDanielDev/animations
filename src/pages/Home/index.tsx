@@ -16,6 +16,12 @@ export const Home: React.FC = () => {
           First Animation :D
         </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity style={styles.item} onPress={() => handleNavigate('PanAnimation')}>
+        <Text style={styles.textItem}>
+          Pan Animations :D
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -33,7 +39,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 3,
     borderColor: 'gray',
-    backgroundColor: 'blue'
+    backgroundColor: 'blue',
+    marginBottom: 5
   },
   textItem: {
     fontSize: 15,
