@@ -23,14 +23,23 @@ export const PanGesture = ({ width, height }: GestureProps) => {
   const translateX = useSharedValue(0)
   const translateY = useSharedValue(0);
 
+  const clamp = (
+    value: number,
+    lowerBound: number,
+    upperBound: number
+  ) => {
+    "worklet";
+    return Math.min(Math.max(lowerBound, value), upperBound);
+  };
+
   const onGestureEvent = useAnimatedGestureHandler({
     onStart: (_, ctx: any) => {
       ctx.offsetX = translateX.value
       ctx.offsetY = translateY.value
     },
     onActive: (event, ctx) => {
-      translateX.value = ctx.offsetX + event.translationX
-      translateY.value = ctx.offsetY + event.translationY
+      translateX.value = clamp(ctx.offsetX + event.translationX, 0, boundX)
+      translateY.value = clamp(ctx.offsetY + event.translationY, 0, boundY)
     },
     onEnd: (event) => {
       translateX.value = withDecay({
