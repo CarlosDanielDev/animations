@@ -22,6 +22,18 @@ export const Home: React.FC = () => {
           Pan Animations :D
         </Text>
       </TouchableOpacity>
+
+      {/* <TouchableOpacity style={styles.item} onPress={() => handleNavigate('HorizontalSlider')}>
+        <Text style={styles.textItem}>
+          Horizontal Slider
+        </Text>
+      </TouchableOpacity> */}
+
+      <TouchableOpacity style={styles.item} onPress={() => handleNavigate('Transitions')}>
+        <Text style={styles.textItem}>
+          Transitions
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }
